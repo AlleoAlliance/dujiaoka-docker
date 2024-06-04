@@ -26,9 +26,9 @@ jobs:
       - name: Tencent Docker Login
         uses: docker/login-action@v3
         with:
-          registry: hkccr.ccs.tencentyun.com
-          username: ${{ secrets.TENCENT_DOCKER_USERNAME }}
-          password: ${{ secrets.TENCENT_DOCKER_TOKEN }}
+          registry: registry.cn-hangzhou.aliyuncs.com
+          username: ${{ secrets.ALIYUN_DOCKER_USERNAME }}
+          password: ${{ secrets.ALIYUN_DOCKER_PASSWORD }}
       - name: Copy TokenPay
         run: cp -r tokenpay/Plugs/dujiaoka dujiaoka
       - name: Build dujiaoka
@@ -40,7 +40,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/apocalypsor/dujiaoka:latest
-            hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:latest
+            registry.cn-hangzhou.aliyuncs.com/alleo/dujiaoka:latest
       - name: Build Epusdt
         uses: docker/build-push-action@v5
         with:
@@ -50,7 +50,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/apocalypsor/dujiaoka:usdt
-            hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:usdt
+            registry.cn-hangzhou.aliyuncs.com/alleo/dujiaoka:usdt
       - name: Build TokenPay
         uses: docker/build-push-action@v5
         with:
@@ -60,5 +60,5 @@ jobs:
           push: true
           tags: |
             ghcr.io/apocalypsor/dujiaoka:tokenpay
-            hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:tokenpay
+            registry.cn-hangzhou.aliyuncs.com/alleo/dujiaoka:tokenpay
 
