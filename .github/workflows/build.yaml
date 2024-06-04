@@ -39,7 +39,7 @@ jobs:
           platforms: linux/amd64, linux/arm64
           push: true
           tags: |
-            ghcr.io/apocalypsor/dujiaoka:latest
+            ghcr.io/AlleoAlliance/dujiaoka:latest
             registry.cn-hangzhou.aliyuncs.com/alleo/dujiaoka:latest
       - name: Build Epusdt
         uses: docker/build-push-action@v5
@@ -49,7 +49,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/apocalypsor/dujiaoka:usdt
+            ghcr.io/AlleoAlliance/dujiaoka:usdt
             registry.cn-hangzhou.aliyuncs.com/alleo/dujiaoka:usdt
       - name: Build TokenPay
         uses: docker/build-push-action@v5
@@ -59,6 +59,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/apocalypsor/dujiaoka:tokenpay
+            ghcr.io/AlleoAlliance/dujiaoka:tokenpay
             registry.cn-hangzhou.aliyuncs.com/alleo/dujiaoka:tokenpay
 
