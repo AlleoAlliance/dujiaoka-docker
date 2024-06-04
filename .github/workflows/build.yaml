@@ -23,7 +23,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.REPO_TOKEN }}
-      - name: Tencent Docker Login
+      - name: Aliyun Docker Login
         uses: docker/login-action@v3
         with:
           registry: registry.cn-hangzhou.aliyuncs.com
