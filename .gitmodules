@@ -1,9 +1,9 @@
 [submodule "dujiaoka"]
 	path = dujiaoka
-	url = https://github.com/assimon/dujiaoka
+	url = https://github.com/AlleoAlliance/dujiaoka
 [submodule "usdt"]
 	path = usdt
-	url = https://github.com/assimon/epusdt
+	url = https://github.com/AlleoAlliance/epusdt
 [submodule "tokenpay"]
 	path = tokenpay
-	url = https://github.com/LightCountry/TokenPay
+	url = https://github.com/AlleoAlliance/TokenPay

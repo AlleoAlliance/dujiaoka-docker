@@ -31,7 +31,7 @@ version: "3"
 
 services:
   faka:
-    image: ghcr.io/apocalypsor/dujiaoka:latest
+    image: ghcr.io/alleoalliance/dujiaoka:latest
     # 国内服务器可以用: hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:latest
     container_name: faka
     environment:
@@ -144,8 +144,8 @@ ADMIN_ROUTE_PREFIX=/admin
 
 ```yaml
   usdt:
-    image: ghcr.io/apocalypsor/dujiaoka:usdt
-    # 国内服务器可以用 hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:usdt
+    image: ghcr.io/alleoalliance/dujiaoka:usdt
+    # 国内服务器可以用 registry.cn-hangzhou.aliyuncs.com/alleo/dujiaoka:usdt
     container_name: faka-usdt
     restart: always
     volumes:
@@ -166,7 +166,7 @@ ADMIN_ROUTE_PREFIX=/admin
 
 ```yaml
   faka-tokenpay:
-    image: ghcr.io/apocalypsor/dujiaoka:tokenpay
+    image: ghcr.io/alleoalliance/dujiaoka:tokenpay
     container_name: faka-tokenpay
     restart: always
     volumes:
