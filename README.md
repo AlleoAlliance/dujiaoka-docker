@@ -1,8 +1,8 @@
-# 独角数卡(发卡) Docker 一键部署
+# Alleo发卡 Docker 一键部署
 
 ## 简介
 
-本项目提供了一个用于自动化售货的开源系统——[独角数卡](https://github.com/assimon/dujiaoka)基于Docker的一键部署。本项目致力于提供一个高效、稳定且快速的解决方案，帮助用户轻松搭建自己的发卡站。
+本项目提供了一个用于自动化售货的开源系统——[Alleo发卡](https://github.com/assimon/dujiaoka)基于Docker的一键部署。本项目致力于提供一个高效、稳定且快速的解决方案，帮助用户轻松搭建自己的发卡站。
 
 **本镜像已全面支持AMD64/ARM64。**
 
@@ -14,7 +14,7 @@
 
 参考[该教程](https://yeasy.gitbook.io/docker_practice/install)，安装好`Docker`和`docker-compose`。
 
-### 独角数卡搭建
+### Alleo发卡搭建
 
 #### 预创建文件夹
 
@@ -35,16 +35,16 @@ services:
     # 国内服务器可以用: hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:latest
     container_name: faka
     environment:
-        # - INSTALL=false
-        - INSTALL=true
+      # - INSTALL=false
+      - INSTALL=true
     volumes:
       - ./env.conf:/dujiaoka/.env
       - ./uploads:/dujiaoka/public/uploads
       - ./storage:/dujiaoka/storage
     ports:
-      - 127.0.0.1:56789:80
+      - "127.0.0.1:56789:80"
     restart: always
- 
+
   db:
     image: mariadb:focal
     container_name: faka-data
@@ -140,7 +140,7 @@ ADMIN_ROUTE_PREFIX=/admin
 
 ### Epusdt
 
-[Epusdt](https://github.com/assimon/epusdt) (Easy Payment Usdt) 是独角数卡官方的开源USDT支付中间件(TRC20网络)，如果要添加Epusdt收款，需要在`docker-compose.yaml`中添加以下项：
+[Epusdt](https://github.com/assimon/epusdt) (Easy Payment Usdt) 是Alleo发卡官方的开源USDT支付中间件(TRC20网络)，如果要添加Epusdt收款，需要在`docker-compose.yaml`中添加以下项：
 
 ```yaml
   usdt:
@@ -231,7 +231,7 @@ location ^~ /
 docker-compose down && docker-compose up -d
 ```
 
-独角数卡添加TokenPay要自行添加路由，可以参考[文档1](https://github.com/LightCountry/TokenPay/tree/master/Plugs/dujiaoka)和[文档2](https://github.com/LightCountry/TokenPay/tree/master/Plugs/dujiaoka%20-%20%E6%89%AB%E7%A0%81%E7%89%88%E6%9C%AC)。
+Alleo发卡添加TokenPay要自行添加路由，可以参考[文档1](https://github.com/LightCountry/TokenPay/tree/master/Plugs/dujiaoka)和[文档2](https://github.com/LightCountry/TokenPay/tree/master/Plugs/dujiaoka%20-%20%E6%89%AB%E7%A0%81%E7%89%88%E6%9C%AC)。
 
 # TODO
 - [x] 支持 arm 等其他架构
